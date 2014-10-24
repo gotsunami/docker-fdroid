@@ -38,7 +38,7 @@ served with your web server.
 
 ### Serving Files With nginx
 
-If you need to install a web serve for serving static content from this new repository,
+If you need to install a web server for serving static content from this new repository,
 just grab `nginx` and run it:
 
     $ docker pull nginx
