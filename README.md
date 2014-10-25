@@ -15,9 +15,6 @@ That means only publishing of *binary APKs* is supported at the moment. If all y
 easily making available a bunch of Android applications to users through an F-Droid repository, with
 automatic app updates, this Docker image might do the trick.
 
-**Warning**: no [repository index signing](https://f-droid.org/manual/fdroid.html#Signing) at 
-the moment (*work in progress*).
-
 ### Quick Start
 
 First, pull the Docker image:
@@ -56,3 +53,21 @@ copy of the `config.py` file:
 Make the appropriate changes then use it when refreshing your application repository:
 
     $ docker run --rm -v $APK_REPO:/apk/repo -v config.py:/apk/config.py gotsunami/fdroid
+
+### Signing Your Repository
+
+Following the [instructions for signing](https://f-droid.org/manual/fdroid.html#Signing)
+your repository, generate a key if you need one with:
+
+    $ keytool -genkey -v -keystore my.keystore -alias repokey -keyalg RSA \
+        -keysize 2048 -validity 10000
+
+Then edit your custom `config.py` by setting up the `keystorepass`, `keypass`, `keystore`
+and `repo_keyalias` variables accordingly.
+
+Finally, run an update using your keystore with:
+
+    $ docker run --rm -v $APK_REPO:/apk/repo \
+        -v config.py:/apk/config.py \
+        -v my.keystore:/tmp/my.keystore \
+        gotsunami/fdroid
