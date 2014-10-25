@@ -14,8 +14,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -q -y \
     git \
     openjdk-7-jdk \
     wget \
+    libjpeg62-dev \
+    zlib1g-dev \
     libstdc++6:i386 \
     zlib1g:i386
+
+RUN pip install pillow
 
 # Android SDK
 ENV ANDROID_HOME /sdk
