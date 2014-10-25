@@ -49,7 +49,7 @@ just grab `nginx` and run it:
 ### Customization
 
 You might certainly want to customize the repo description and title, right? Just grab a
-copyt of the `config.py` file:
+copy of the `config.py` file:
 
     $ wget https://raw.githubusercontent.com/gotsunami/docker-fdroid/master/config.py
 
